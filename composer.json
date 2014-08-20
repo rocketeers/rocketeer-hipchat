@@ -1,6 +1,6 @@
 {
-	"name": "rocketeers/rocketeer-hipchat",
-	"description": "Hipchat plugin for Rocketeer",
+  "name": "rocketeers/rocketeer-hipchat",
+  "description": "Hipchat plugin for Rocketeer",
   "license": "MIT",
   "keywords": [
     "rocketeer",
@@ -8,21 +8,23 @@
     "hipchat",
     "laravel"
   ],
-	"authors": [
-		{
-			"name": "Maxime Fabre",
-			"email": "ehtnam6@gmail.com"
-		}
-	],
-	"require": {
-		"php": ">=5.4.0",
-		"anahkiasen/rocketeer": "2.0.*@dev",
-		"illuminate/support": "~4.2",
-		"hannesvdvreken/hipchat": "0.1.*"
-	},
-	"autoload": {
-		"psr-4": {
-			"Rocketeer\\Plugins\\Hipchat\\": "src/Hipchat"
-		}
-	}
+  "authors": [
+    {
+      "name": "Maxime Fabre",
+      "email": "ehtnam6@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "anahkiasen/rocketeer": "2.0.*@dev",
+    "hannesvdvreken/hipchat": "0.1.*"
+  },
+  "require-dev": {
+    "illuminate/support": "~4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rocketeer\\Plugins\\Hipchat\\": "src/Hipchat"
+    }
+  }
 }
