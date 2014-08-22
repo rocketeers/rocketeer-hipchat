@@ -41,7 +41,7 @@ class RocketeerHipchat extends AbstractNotifier
 	 *
 	 * @return string
 	 */
-	protected function getMessageFormat($message)
+	public function getMessageFormat($message)
 	{
 		return $this->app['config']->get('rocketeer-hipchat::'.$message);
 	}
