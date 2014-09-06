@@ -1,37 +1,45 @@
 <?php
 namespace Rocketeer\Plugins\Hipchat;
 
-use Hipchat\Support\ServiceProvider;
-use Illuminate\Container\Container;
 use Rocketeer\Plugins\AbstractNotifier;
-use Rocketeer\Plugins\Notifier;
+use Hipchat\Notifier as Hipchat;
 
 class RocketeerHipchat extends AbstractNotifier
 {
 	/**
+	 * @var Hipchat
+	 */
+	protected $hipchat;
+
+	/**
+	* @var array
+	*/
+	protected $messages;
+
+	/**
+	* @var string
+	*/
+	protected $room;
+
+	/**
+	* @var string
+	*/
+	protected $color;
+
+	/**
 	 * Setup the plugin
 	 *
 	 * @param Container $app
+	 * @param string $room
+	 * @param string $color
+	 * @param array $messages
 	 */
-	public function __construct(Container $app)
+	public function __construct(Hipchat $hipchat, $room, $color, $messages)
 	{
-		parent::__construct($app);
-
-		$this->configurationFolder = __DIR__.'/../config';
-	}
-
-	/**
-	 * Bind additional classes to the Container
-	 *
-	 * @param Container $app
-	 *
-	 * @return void
-	 */
-	public function register(Container $app)
-	{
-		$provider = new ServiceProvider($app);
-		$provider->register();
-		$provider->boot();
+		$this->hipchat = $hipchat;
+		$this->room = $room;
+		$this->color = $color;
+		$this->messages = $messages;
 	}
 
 	/**
@@ -43,7 +51,7 @@ class RocketeerHipchat extends AbstractNotifier
 	 */
 	public function getMessageFormat($message)
 	{
-		return $this->app['config']->get('rocketeer-hipchat::'.$message);
+		return $this->messages[$message];
 	}
 
 	/**
@@ -55,10 +63,6 @@ class RocketeerHipchat extends AbstractNotifier
 	 */
 	public function send($message)
 	{
-		$room  = $this->app['config']->get('rocketeer-hipchat::room') ?: $this->app['config']->get('hipchat::default');
-		$color = $this->app['config']->get('rocketeer-hipchat::color') ?: $this->app['config']->get('hipchat::color');
-
-		// Make the hipchat request.
-		return $this->app['hipchat']->notifyIn($room, $message, $color);
+		return $this->hipchat->notifyIn($this->room, $message, $this->color);
 	}
 }
