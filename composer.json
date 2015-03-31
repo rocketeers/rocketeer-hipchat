@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "anahkiasen/rocketeer": "2.0.*@dev",
+    "anahkiasen/rocketeer": "~2.0@dev",
     "hannesvdvreken/hipchat": "0.1.*"
   },
   "require-dev": {
