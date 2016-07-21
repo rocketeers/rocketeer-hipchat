@@ -2,18 +2,17 @@
 
 Sends a basic deployment message to an Hipchat room.
 
-To setup add this to your `composer.json` and update :
+## Installation
 
-```json
-"rocketeers/rocketeer-hipchat": "dev-master"
+```shell
+rocketeer plugin:install anahkiasen/rocketeer-hipchat
 ```
 
-Then you'll need to set it up, so do `artisan config:publish rocketeer/rocketeer-hipchat` and complete the configuration in `app/packages/rocketeer/rocketeer-hipchat/config.php`.
-
-Once that's done add the following to your providers array in `app/config/app.php` :
+Then add this to the `plugins.loaded` array in your configuration:
 
 ```php
-'Rocketeer\Plugins\Hipchat\RocketeerHipchatServiceProvider',
+<?php
+'loaded' => [
+    'Rocketeer\Plugins\Hipchat\RocketeerHipchat',
+],
 ```
-
-And that's pretty much it.
