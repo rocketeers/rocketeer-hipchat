@@ -2,9 +2,9 @@
 namespace Rocketeer\Plugins\Hipchat;
 
 use Rocketeer\Plugins\AbstractNotifier;
-use Hipchat\Notifier as Hipchat;
+use Hipchat\Notifier;
 
-class RocketeerHipchat extends AbstractNotifier
+class Hipchat extends AbstractNotifier
 {
     /**
      * @var string
@@ -16,7 +16,7 @@ class RocketeerHipchat extends AbstractNotifier
      */
     public function register()
     {
-        $this->container->share('hipcat', Hipchat::class);
+        $this->container->share('hipcat', Notifier::class);
     }
 
     /**
