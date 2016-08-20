@@ -26,7 +26,7 @@ class Hipchat extends AbstractNotifier
 	 *
 	 * @return void
 	 */
-	public function send($message)
+	public function send($message, $type)
 	{
 	    $room = $this->getPluginOption('room');
         $color = $this->getPluginOption('color');
